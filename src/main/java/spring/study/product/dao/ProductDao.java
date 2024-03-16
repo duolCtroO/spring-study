@@ -20,8 +20,8 @@ public class ProductDao {
             ps.setInt(3, product.getPrice());
             //statement 실행
             ps.execute();
-            //작업 중 만든 Connection, statement, resultset 리소스 닫아주기
         }finally {
+            //작업 중 만든 Connection, statement, resultset 리소스 닫아주기
             if(ps != null) ps.close();
             if(con != null) con.close();
         }
@@ -38,8 +38,8 @@ public class ProductDao {
             ps = con.prepareStatement("delete from product");
             //statement 실행
             ps.execute();
-            //작업 중 만든 Connection, statement, resultset 리소스 닫아주기
         }finally {
+            //작업 중 만든 Connection, statement, resultset 리소스 닫아주기
             if(ps != null) ps.close();
             if(con != null) con.close();
         }
@@ -65,8 +65,8 @@ public class ProductDao {
                 result.setPrice(rs.getInt(3));
             }
             return result;
-            //작업 중 만든 Connection, statement, resultset 리소스 닫아주기
         }finally {
+            //작업 중 만든 Connection, statement, resultset 리소스 닫아주기
             if(rs != null) rs.close();
             if(ps != null) ps.close();
             if(con != null) con.close();
