@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ProductDaoTest {
-    private static ProductDao dao = new ProductDao();
+    private static ProductDao dao = new AproductDao();
 
     @BeforeAll
     @AfterAll

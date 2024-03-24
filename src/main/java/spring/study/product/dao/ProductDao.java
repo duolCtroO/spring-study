@@ -4,8 +4,7 @@ import spring.study.product.domain.Product;
 
 import java.sql.*;
 
-public class ProductDao {
-
+public abstract class ProductDao {
     public void add(Product product) throws ClassNotFoundException, SQLException {
         Connection con = null;
         PreparedStatement ps = null;
@@ -71,16 +70,11 @@ public class ProductDao {
     }
 
     /**
-     * 각 메서드에서 직접 Connection 객체를 생성하던 부분을 해당 메서드로 뺌
-     * DB 접속 정보가 바뀌더라도 해당 메서드만 수정해주면 된다.
+     * 확장성을 고려하여 추상 메서드 추가
      * @return DB Connenction 객체
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    private Connection getConnection() throws SQLException, ClassNotFoundException {
-        //DB 연결을 위한 Connection 가져오기
-        Class.forName("org.mariadb.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mariadb://localhost/springbook", "root", "root");
-    }
+    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
 
 }
