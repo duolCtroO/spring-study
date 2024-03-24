@@ -11,8 +11,7 @@ public class ProductDao {
         PreparedStatement ps = null;
         try {
             //DB 연결을 위한 Connection 가져오기
-            Class.forName("org.mariadb.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/springbook", "root", "root");
+            con = getConnection();
             //SQL문을 담을 statement 만들기
             ps = con.prepareStatement("insert into product(id, name, price) values(?, ?, ?)");
             ps.setLong(1, product.getId());
@@ -32,8 +31,7 @@ public class ProductDao {
         PreparedStatement ps = null;
         try {
             //DB 연결을 위한 Connection 가져오기
-            Class.forName("org.mariadb.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/springbook", "root", "root");
+            con = getConnection();
             //SQL문을 담을 statement 만들기
             ps = con.prepareStatement("delete from product");
             //statement 실행
@@ -51,8 +49,7 @@ public class ProductDao {
         ResultSet rs = null;
         try {
             //DB 연결을 위한 Connection 가져오기
-            Class.forName("org.mariadb.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/springbook", "root", "root");
+            con = getConnection();
             //SQL문을 담을 statement 만들기
             ps = con.prepareStatement("select * from product where id = ?");
             ps.setLong(1, id);
@@ -71,6 +68,19 @@ public class ProductDao {
             if(ps != null) ps.close();
             if(con != null) con.close();
         }
+    }
+
+    /**
+     * 각 메서드에서 직접 Connection 객체를 생성하던 부분을 해당 메서드로 뺌
+     * DB 접속 정보가 바뀌더라도 해당 메서드만 수정해주면 된다.
+     * @return DB Connenction 객체
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    private Connection getConnection() throws SQLException, ClassNotFoundException {
+        //DB 연결을 위한 Connection 가져오기
+        Class.forName("org.mariadb.jdbc.Driver");
+        return DriverManager.getConnection("jdbc:mariadb://localhost/springbook", "root", "root");
     }
 
 }
