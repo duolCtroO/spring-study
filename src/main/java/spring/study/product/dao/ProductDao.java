@@ -1,22 +1,23 @@
 package spring.study.product.dao;
 
+import spring.study.product.connection.ConnectionMaker;
 import spring.study.product.connection.SimpleConnectionMaker;
 import spring.study.product.domain.Product;
 
 import java.sql.*;
 
-public class ProductDao {
-    private SimpleConnectionMaker simpleConnectionMaker;
+public class ProductDao{
+    private ConnectionMaker connectionMaker;
 
-    public ProductDao(){
-        this.simpleConnectionMaker = new SimpleConnectionMaker();
+    public ProductDao(ConnectionMaker connectionMaker){
+        this.connectionMaker = connectionMaker;
     }
     public void add(Product product) throws ClassNotFoundException, SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         try {
             //DB 연결을 위한 Connection 가져오기
-            con = simpleConnectionMaker.makeConnection();
+            con = connectionMaker.getConnection();
             //SQL문을 담을 statement 만들기
             ps = con.prepareStatement("insert into product(id, name, price) values(?, ?, ?)");
             ps.setLong(1, product.getId());
@@ -36,7 +37,7 @@ public class ProductDao {
         PreparedStatement ps = null;
         try {
             //DB 연결을 위한 Connection 가져오기
-            con = simpleConnectionMaker.makeConnection();
+            con = connectionMaker.getConnection();
             //SQL문을 담을 statement 만들기
             ps = con.prepareStatement("delete from product");
             //statement 실행
@@ -54,7 +55,7 @@ public class ProductDao {
         ResultSet rs = null;
         try {
             //DB 연결을 위한 Connection 가져오기
-            con = simpleConnectionMaker.makeConnection();
+            con = connectionMaker.getConnection();
             //SQL문을 담을 statement 만들기
             ps = con.prepareStatement("select * from product where id = ?");
             ps.setLong(1, id);
@@ -74,5 +75,4 @@ public class ProductDao {
             if(con != null) con.close();
         }
     }
-
 }

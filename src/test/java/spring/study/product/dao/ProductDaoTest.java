@@ -1,14 +1,17 @@
 package spring.study.product.dao;
 
 import org.junit.jupiter.api.*;
+import spring.study.product.connection.ConnectionMaker;
+import spring.study.product.connection.SimpleConnectionMaker;
 import spring.study.product.domain.Product;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ProductDaoTest {
-    private static ProductDao dao = new AproductDao();
+    private static ProductDao dao = new ProductDao(new SimpleConnectionMaker());
 
     @BeforeAll
     @AfterAll
