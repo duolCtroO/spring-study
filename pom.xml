@@ -37,6 +37,56 @@
       <version>RELEASE</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>3.0.7.RELEASE</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>3.0.7.RELEASE</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/org.springframework.beans -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.beans</artifactId>
+      <version>3.0.7.RELEASE</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/lib/org.springframework.beans-3.0.7.RELEASE.jar</systemPath>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/org.springframework.asm -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.asm</artifactId>
+      <version>3.0.7.RELEASE</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/lib/org.springframework.asm-3.0.7.RELEASE.jar</systemPath>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/net.sourceforge.cglib/com.springsource.net.sf.cglib -->
+    <dependency>
+      <groupId>net.sourceforge.cglib</groupId>
+      <artifactId>com.springsource.net.sf.cglib</artifactId>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/lib/com.springsource.net.sf.cglib-2.2.0.jar</systemPath>
+      <version>2.2.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-expression -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-expression</artifactId>
+      <version>3.0.7.RELEASE</version>
+    </dependency>
+
   </dependencies>
 
   <build>
